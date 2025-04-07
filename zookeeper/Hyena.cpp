@@ -1,7 +1,6 @@
 #include "Hyena.h"
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
+#include <random>
 
 namespace animal {
     Hyena::Hyena(const std::string &id,const std::string &name, int age, int weight, const std::string &species, const std::string &origin, const std::string &birthSeason, const std::string &color) : Animal(id,name, age, weight, "Hyena", origin, birthSeason, color) {}
@@ -11,12 +10,10 @@ namespace animal {
     }
 
     std::string Hyena::generateName() {
-        static bool seeded = false;
-        if (!seeded) {
-            srand(static_cast<unsigned int>(time(nullptr)));
-            seeded = true;
-        }
-        int randomIndex = rand() % 11;
+        static std::random_device rd;
+        static std::mt19937 generator(rd());
+        std::uniform_int_distribution<int> distribution(0, 10);
+        int randomIndex = distribution(generator);
         if (Animal::animalNames.size() > 1 && Animal::animalNames[0].size() >= randomIndex) {
             return Animal::animalNames[0][randomIndex];
         } else {

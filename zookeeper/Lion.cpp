@@ -1,8 +1,7 @@
 #include "Lion.h"
 #include "Animal.h"
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
+#include <random>
 
 namespace animal {
     Lion::Lion(const std::string &id,const std::string &name, int age, int weight, const std::string &species, const std::string &origin, const std::string &birthSeason, const std::string &color) : Animal(id,name, age, weight, "Lion", origin, birthSeason, color) {}
@@ -12,12 +11,10 @@ namespace animal {
     }
 
     std::string Lion::generateName() {
-        static bool seeded = false;
-        if (!seeded) {
-            srand(static_cast<unsigned int>(time(nullptr)));
-            seeded = true;
-        }
-        int randomIndex = rand() % 12;
+        static std::random_device rd;
+        static std::mt19937 generator(rd());
+        std::uniform_int_distribution<int> distribution(0, 11);
+        int randomIndex = distribution(generator);
         if (Animal::animalNames.size() > 1 && Animal::animalNames[1].size() >= randomIndex) {
             return Animal::animalNames[1][randomIndex];
         } else {

@@ -8,6 +8,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <set>
 #include <map>
 #include "Hyena.h"
 #include "Lion.h"
@@ -24,12 +25,14 @@ namespace zooManager {
         std::vector<animal::Lion> lionEnclosure;
         std::vector<animal::Tiger> tigerEnclosure;
         std::vector<animal::Bear> bearEnclosure;
+        // used animal names
+        std::set<std::string> usedAnimalNames;
         // Default constructor
         ZooManager();
-
         // Constructor
         ZooManager(std::vector<animal::Hyena> hyenaEnclosure, std::vector<animal::Lion> lionEnclosure,
-                   std::vector<animal::Tiger> tigerEnclosure, std::vector<animal::Bear> bearEnclosure);
+                   std::vector<animal::Tiger> tigerEnclosure, std::vector<animal::Bear> bearEnclosure,
+                   std::set<std::string>usedAnimalNames);
 
         // Destructor
         virtual ~ZooManager() = default;

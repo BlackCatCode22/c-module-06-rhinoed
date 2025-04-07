@@ -9,6 +9,7 @@
 #include "Lion.h"
 #include "Tiger.h"
 #include "Bear.h"
+#include <set>
 
 enum
 {
@@ -146,6 +147,10 @@ void Frame::processAnimals(wxCommandEvent& event) {
         if (species == "hyena") {
             std::cout << "Hyena\n";
             std::string hyenaName = animal::Hyena::generateName();
+           while (zoo.usedAnimalNames.contains(hyenaName)) {
+               hyenaName = animal::Hyena::generateName();
+           }
+            zoo.usedAnimalNames.insert(hyenaName);
             animal::Hyena hyena("Hy", hyenaName, std::stoi(age), std::stoi(weight), species, origin, birthSeason, color);
             std::cout << "Hyena: " << hyenaName << "\n";
             zoo.genBirthDate(hyena.getBirthSeason(), hyena.getAge());
@@ -153,17 +158,29 @@ void Frame::processAnimals(wxCommandEvent& event) {
         } else if (species == "bear") {
             std::cout << "Bear\n";
             std::string bearName = animal::Bear::generateName();
+            while (zoo.usedAnimalNames.contains(bearName)) {
+                bearName = animal::Bear::generateName();
+            }
+            zoo.usedAnimalNames.insert(bearName);
             animal::Bear bear("Be", bearName, std::stoi(age), std::stoi(weight), species, origin, birthSeason, color);
             zoo.genBirthDate(bear.getBirthSeason(), bear.getAge());
             zoo.processAnimals(bear);
         } else if (species == "lion") {
             std::cout << "Lion\n";
             std::string lionName = animal::Lion::generateName();
+            while (zoo.usedAnimalNames.contains(lionName)) {
+                lionName = animal::Lion::generateName();
+            }
+            zoo.usedAnimalNames.insert(lionName);
             animal::Lion lion("Li", lionName, std::stoi(age), std::stoi(weight), species, origin, birthSeason, color);
             zoo.processAnimals(lion);
         } else if (species == "tiger") {
             std::cout << "Tiger\n";
             std::string tigerName = animal::Tiger::generateName();
+            while (zoo.usedAnimalNames.contains(tigerName)) {
+                tigerName = animal::Tiger::generateName();
+            }
+            zoo.usedAnimalNames.insert(tigerName);
             animal::Tiger tiger("Ti", tigerName, std::stoi(age), std::stoi(weight), species, origin, birthSeason, color);
             zoo.genBirthDate(tiger.getBirthSeason(), tiger.getAge());
             zoo.processAnimals(tiger);

@@ -6,6 +6,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <set>
 #include <ostream>
 #include <iomanip>
 #include <sstream>
@@ -15,7 +16,7 @@
 namespace zooManager {
     ZooManager::ZooManager() {};
 
-    ZooManager::ZooManager(std::vector<animal::Hyena> hyenaEnclosure, std::vector<animal::Lion> lionEnclosure, std::vector<animal::Tiger> tigerEnclosure, std::vector<animal::Bear> bearEnclosure) {}
+    ZooManager::ZooManager(std::vector<animal::Hyena> hyenaEnclosure, std::vector<animal::Lion> lionEnclosure, std::vector<animal::Tiger> tigerEnclosure, std::vector<animal::Bear> bearEnclosure, std::set<std::string> usedAnimalNames) {}
 
     void ZooManager::addAnimal(const std::string &species, const std::string &name, int age) {
         // TODO: Implement this function
