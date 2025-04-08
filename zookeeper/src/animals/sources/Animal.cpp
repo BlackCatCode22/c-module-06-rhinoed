@@ -7,7 +7,7 @@
 using namespace std;
 
 namespace animal {
-    std::vector<std::vector<std::string>> Animal::animalNames = parseAnimalNames("../animalNames.txt");
+    std::vector<std::vector<std::string>> Animal::animalNames = parseAnimalNames("../data/animalNames.txt");
 
     // Constructor
     Animal::Animal(

@@ -52,7 +52,7 @@ namespace zooManager {
 
     void ZooManager::generateReport() {
         // Open a file for writing
-        std::string filename = "../zooReport.txt";
+        std::string filename = "../data/zooReport.txt";
         std::ofstream file(filename);
         // Write the report to the file
         file << "*******************************\n";

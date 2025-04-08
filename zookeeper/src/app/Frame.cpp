@@ -119,7 +119,7 @@ void Frame::generateReport(wxCommandEvent& event) {
     std::cout << "Hello world from generateReport!\n";
     zoo.generateReport();
     // read from the ../zooReport.txt file and display it in the list box
-    std::ifstream file("../zooReport.txt");
+    std::ifstream file("../data/zooReport.txt");
     std::string line;
     while (std::getline(file, line)) {
         // Append each line to the list box
@@ -131,7 +131,7 @@ void Frame::processAnimals(wxCommandEvent& event) {
     wxMessageBox("Process the incoming animals", "Process Animals", wxOK  | wxICON_INFORMATION);
     // Call the processAnimals function in ZooManager
     std::cout << "Hello world from processAnimals!\n";
-    std::string filename = "../arrivingAnimals.txt";
+    std::string filename = "../data/arrivingAnimals.txt";
     std::vector<std::vector<std::string>> data = parseFile(filename);
     for (int i = 0; i < data.size(); i++) {
         std::string age = splitString(data[i][0], ' ', 0);
